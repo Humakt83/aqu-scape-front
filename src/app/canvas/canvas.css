@@ -1,0 +1,6 @@
+.canvasOfObjects {
+    width: 10%;
+    border-right: rgb(50, 50, 200) solid 3px;
+    height: 100%;
+    float: left;
+}

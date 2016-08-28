@@ -1,5 +1,13 @@
+html {
+    height: 100%;
+}
+
 body {
-    background-color: rgb(143, 255, 237);
+    background-color: rgb(183, 235, 247);
     height: 100%;
     overflow-x: hidden;
+}
+
+.container {
+    height: 100%;
 }
