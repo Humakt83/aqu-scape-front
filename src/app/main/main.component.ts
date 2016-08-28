@@ -5,7 +5,7 @@ import { PlantService } from '../shared/index';
 
 @Component({
   selector: 'aqu',
-  templateUrl: 'main/main.html',
+  templateUrl: 'app/main/main.html',
   providers: [ PlantService ],
   directives: [ CanvasComponent, DrawingAreaComponent ]
 })
