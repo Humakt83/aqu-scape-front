@@ -7,7 +7,7 @@ export class PlantService {
     
     plants : BehaviorSubject<Plant[]> = new BehaviorSubject<Plant[]>([]);
     
-    getPlants() : Observable<Plant[]> {
+    getPlants() : BehaviorSubject<Plant[]> {
         this.plants.next(this.plantsArray);
         return this.plants;
     }
