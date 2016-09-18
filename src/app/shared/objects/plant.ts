@@ -1,17 +1,15 @@
-import { OptimalWater } from './optimal-water';
-
 const minimumGreen = 100;
 
 export class Plant {
   
-    constructor(public scientificName: string, public name: string, public optimalWater: OptimalWater, public color: string) {}
+    constructor(public scientificName: string, public name: string, public diameter: number, public height: number, public color: string) {}
   
     toString(): string {
-        return `${this.scientificName}: (${this.optimalWater.toString()})`
+        return `${this.scientificName} (Diameter: ${this.diameter} cm, Height: ${this.height} cm)`
     }
 
     public static fromJSON(obj: any): Plant {
-        return new Plant(obj.scientificName, obj.finnishName, new OptimalWater(obj.phMin, obj.phMax, obj.dhMin, obj.dhMax, obj.tempMin, obj.tempMax), Plant.randomColor());
+        return new Plant(obj.scientificName, obj.finnishName, obj.diameter, obj.height , Plant.randomColor());
     }
 
     static randomColor(): string {

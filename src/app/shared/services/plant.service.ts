@@ -20,7 +20,6 @@ export class PlantService {
 
     private extractData(res: Response): Plant[] {
         let plants: Plant[] = [];
-        console.log(res.json());
         res.json().forEach((part: any) => plants.push(Plant.fromJSON(part)));
         return plants;
     }
