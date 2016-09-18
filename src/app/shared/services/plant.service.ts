@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class PlantService {
     
-    private plantsUrl = 'http://localhost:8888/plants'; 
+    private plantsUrl = 'http://localhost:8888/plants/lite'; 
 
     constructor (private http: Http) {}
 
