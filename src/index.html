@@ -11,6 +11,11 @@
         <aqu>Lataa...</aqu>
     </body>
     <script>
+        if(window.location.href.indexOf('?plants=') === -1) {
+            window.location.href = 'http://localhost:3000';
+        }
+    </script>
+    <script>
         // Fixes undefined module function in SystemJS bundle
         function module() {}
     </script>
