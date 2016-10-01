@@ -1,6 +1,6 @@
 <div class="canvasOfObjects">
-    <div *ngFor="let plant of plants" class="plant" [title]="plant.toString()" [style.background-color]="plant.color">
+    <div *ngFor="let plant of plants" class="plant" [title]="plant.toString()" [style.background-color]="plant.color" (click)="plantBrush(plant)">
     </div>
-    <div class="stone"></div>
-    <div class="tree"></div>
+    <div class="stone" (click)="stoneBrush()"></div>
+    <div class="tree" (click)="treeBrush()"></div>
 </div>

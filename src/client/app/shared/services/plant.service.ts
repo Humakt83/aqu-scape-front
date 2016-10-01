@@ -4,19 +4,21 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import { GraphicsService } from './graphics.service';
 
 @Injectable()
 export class PlantService {
     
     private plantsUrl = 'http://localhost:8888/plants/lite'; 
 
-    constructor (private http: Http) {}
+    constructor (private http: Http, private graphicsService: GraphicsService) {}
 
     getPlants() : Observable<Plant[]> {
         let usedPlants = this.getPlantsFromUrl();    
         return this.http.get(this.plantsUrl)
                     .map(this.extractData)
                     .map(plants => plants.filter(plant => usedPlants.includes(plant.identificationNumber)))
+                    .do(plants => this.graphicsService.assignColorPropertiesToPlants(plants))
                     .catch(this.handleError);
     }
 

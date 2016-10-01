@@ -1,3 +1,3 @@
-export * from './services/plant.service';
+export * from './services/index';
 export * from './objects/plant';
-export * from './objects/optimal-water';
+export * from './tools/index';

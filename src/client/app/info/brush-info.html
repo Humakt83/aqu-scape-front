@@ -1,0 +1,8 @@
+<div [style]="brush.backgroundColor">
+    HEH
+    <p class="brush aquText" [style]="brush.textColor">
+        <span *ngIf="!brush.customType"><strong>Selected brush ({{brush.identificationNumber}})</strong>: {{brush.scientificName}} (diameter: {{brush.diameter}} cm, height: {{brush.height}} cm)</span>
+        <span *ngIf="brush.customType === 'tree'">Selected brush: BRANCH/ROOT</span>
+        <span *ngIf="brush.customType === 'stone'">Selected brush: STONE</span>
+    </p>
+</div>
