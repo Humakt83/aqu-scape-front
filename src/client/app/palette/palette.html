@@ -1,4 +1,5 @@
 <div class="canvasOfObjects">
+    <tools></tools>
     <div *ngFor="let plant of plants" class="plant" [title]="plant.toString()" [style.background-color]="plant.color" (click)="plantBrush(plant)" [style.color]="plant.textColor">
         {{plant.identificationNumber}}
     </div>

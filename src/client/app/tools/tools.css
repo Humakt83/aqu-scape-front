@@ -29,3 +29,20 @@
     float: right;
     margin-right: 5px;
 }
+
+.tools {
+    width: 100%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.toolButton {
+    font-size: x-small;
+    width: 23%;
+    padding: 1px;
+    font-weight: bold;
+    height: 27px;
+    color: white;
+    background: rgb(100, 100, 220);
+    background: linear-gradient(to right, rgb(100, 100, 220) 0%,rgb(150, 150, 250) 40%,rgb(120, 120, 240) 100%);
+}
