@@ -46,7 +46,7 @@ export class DrawingAreaComponent implements OnInit {
                 ellipse.plant = this.brush;
                 let text = new paper.PointText(ellipse.position);
                 text.justification = 'center';
-                text.fillColor = this.brush.textColor.color;
+                text.fillColor = this.brush.textColor;
                 text.content = this.brush.identificationNumber;
                 ellipse.text = text;
                 this.goThroughDrawnPlants();

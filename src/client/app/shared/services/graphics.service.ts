@@ -31,8 +31,8 @@ export class GraphicsService {
             let textColor = this.textColorFittingBackground(color);
             plant.randomColor = color;
             plant.color = 'rgb(' + color.red + ', ' + color.green + ', ' + color.blue + ')';
-            plant.backgroundColor = {'background-color': 'rgb(' + color.red + ', ' + color.green + ', ' + color.blue + ')'};
-            plant.textColor = {'color': textColor};
+            plant.backgroundColor = 'rgb(' + color.red + ', ' + color.green + ', ' + color.blue + ')';
+            plant.textColor = textColor;
         });
     }
 

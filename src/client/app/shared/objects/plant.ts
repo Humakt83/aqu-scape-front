@@ -4,8 +4,8 @@ export class Plant {
 
     randomColor: any;
     color: string;
-    backgroundColor: any;
-    textColor: any;
+    backgroundColor: string;
+    textColor: string;
   
     constructor(public identificationNumber: number, public scientificName: string, public name: string, public diameter: number, public height: number) {}
   

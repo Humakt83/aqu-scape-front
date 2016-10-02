@@ -4,18 +4,28 @@
     float: left;
 }
 
-.plant, .stone, .tree {
+.plant,
+.stone,
+.tree {
     width: 100%;
-    height: 15px;    
+    height: 25px;    
     margin-bottom: 2px;
     border-radius: 15px;
-    border: rgb(50, 50, 200) groove 3px
+    border: rgb(50, 50, 200) groove 3px;
+    font-size: smaller;
+    font-weight: bold;    
+    text-align: center;
+}
+
+.stone,
+.tree {
+    color: white;
 }
 
 .stone {
-    background-color: rgb(100, 100, 100);  
+    background-color: rgb(150, 150, 150);  
 }
 
 .tree {
-    background-color: rgb(150, 120, 0);  
+    background-color: rgb(170, 80, 80);  
 }

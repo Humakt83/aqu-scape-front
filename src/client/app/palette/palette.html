@@ -1,6 +1,7 @@
 <div class="canvasOfObjects">
-    <div *ngFor="let plant of plants" class="plant" [title]="plant.toString()" [style.background-color]="plant.color" (click)="plantBrush(plant)">
+    <div *ngFor="let plant of plants" class="plant" [title]="plant.toString()" [style.background-color]="plant.color" (click)="plantBrush(plant)" [style.color]="plant.textColor">
+        {{plant.identificationNumber}}
     </div>
-    <div class="stone" (click)="stoneBrush()"></div>
-    <div class="tree" (click)="treeBrush()"></div>
+    <div class="stone" (click)="stoneBrush()">STONE</div>
+    <div class="tree" (click)="treeBrush()">BRANCH/TRUNK</div>
 </div>
