@@ -14,7 +14,7 @@ export class GraphicsService {
     }
 
     drawEllipseFittingCanvasAndDimension(point: any, diameter: number, color: any): any {
-        var size = new paper.Size(this.scaleDepthToFittingDimensions(diameter), this.scaleWidthToFittingDimensions(diameter))
+        var size = new paper.Size(this.scaleWidthToFittingDimensions(diameter), this.scaleDepthToFittingDimensions(diameter))
         point.x = point.x - (size.width / 2);
         point.y = point.y - (size.height / 2);
         var rectangle = new paper.Rectangle(point, size);
@@ -55,15 +55,15 @@ export class GraphicsService {
         let green = Math.max(Math.floor(Math.random() * 255), minimumGreen);
         let red = Math.floor(Math.random() * green);
         let blue = Math.floor(Math.random() * green);
-        return {green: green, red: red, blue: blue};
+        return { green: green, red: red, blue: blue };
     }
 
     private colorClashes(color: any, plantArray: Plant[]) {
-        for (let i = 0 ; i < plantArray.length; i++) {
+        for (let i = 0; i < plantArray.length; i++) {
             if (plantArray[i].randomColor && Math.abs(this.getSumOfColor(plantArray[i].randomColor) - this.getSumOfColor(color)) < 30) {
                 return true;
             }
-        }; 
+        };
         return false;
     }
 
