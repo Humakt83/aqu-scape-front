@@ -28,9 +28,11 @@ export class DrawingAreaComponent implements OnInit {
         var canvas = document.getElementById('drawingCanvas');        
         paper.setup(canvas);
         paper.view.draw();
+        //inserts an object
         paper.view.onMouseDown = ((event: any) => {            
             if (!this.brush) return;
             var ellipse = this.graphicsService.drawEllipseFittingCanvasAndDimension(event.point, this.brush.diameter, this.brush.color);
+            //selects the placed object
             ellipse.onMouseDown = ((event: any) => {
                 event.preventDefault();
                 event.stopPropagation();
@@ -56,6 +58,7 @@ export class DrawingAreaComponent implements OnInit {
             this.undoRedoTool.pushToActionStack(ellipse, this.undoRedoTool.addAction());            
             paper.view.draw();
         });
+        //moves the selected object
         paper.view.onMouseDrag = ((event: any) => {
             let item = this.selectedItem;
             if (!item) return;
@@ -67,6 +70,7 @@ export class DrawingAreaComponent implements OnInit {
                 if (item.text) item.text.position = event.point;
             }
         });
+        //unselects the object
         paper.view.onMouseUp = ((event: any)=> {
             let item = this.selectedItem;
             if (!item || item.strokeColor === 'yellow') return;
@@ -85,6 +89,9 @@ export class DrawingAreaComponent implements OnInit {
         });
     }
 
+    /**
+     * Loops through placed plants and sets fill color of any plants in shadow to red.
+     */
     private goThroughDrawnPlants() {
         let visiblePlants = this.drawnPlants.filter((plant: any) => plant.opacity === 1);
         visiblePlants.forEach((ellipse: any) => {            
