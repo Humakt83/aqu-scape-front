@@ -3,7 +3,7 @@ import { DimensionService, Dimension, BrushTool } from '../shared/index';
 
 @Component({
     selector: 'info',
-    templateUrl: 'app/info/info.html',
+    templateUrl: 'app/info/info.html'
 })
 export class InfoComponent implements OnInit {
 
