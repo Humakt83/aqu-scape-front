@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UndoRedoTool {
 
+    undoRedoOccurred: BehaviorSubject<void> = new BehaviorSubject(null);
+
     private actionStack: any[] = [];
     private currentUndoIndex: number = 0;
-    actionTypeMove = 'move';
-    actionTypeAdd = 'add';
+    private actionTypeMove = 'move';
+    private actionTypeAdd = 'add';
 
     moveAction() {
         return this.actionTypeMove;
@@ -32,6 +35,7 @@ export class UndoRedoTool {
         }        
         this.currentUndoIndex -= 1;
         paper.view.draw();
+        this.undoRedoOccurred.next(null);
     }
 
     redo() {
@@ -45,6 +49,7 @@ export class UndoRedoTool {
             if (this.actionStack[this.currentUndoIndex].item.text) this.actionStack[this.currentUndoIndex].item.text.opacity = '1';
         }
         paper.view.draw();
+        this.undoRedoOccurred.next(null);
     }
     pushToActionStack(item: any, action: string, previousPosition?: any, newPosition?: any) {
         this.actionStack.push({item: item, action: action, previousPosition: previousPosition, newPosition: newPosition});

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BrushTool, GraphicsService, UndoRedoTool } from '../shared/index';
+import { BrushTool, GraphicsService, UndoRedoTool, ClearTool } from '../shared/index';
 
 @Component({
     selector: 'drawing-area',
@@ -12,10 +12,15 @@ export class DrawingAreaComponent implements OnInit {
     selectedItem: any;
     brush: any;
 
-    constructor(private brushTool: BrushTool, private graphicsService: GraphicsService, private undoRedoTool: UndoRedoTool) {}
+    constructor(private brushTool: BrushTool, private graphicsService: GraphicsService, private undoRedoTool: UndoRedoTool, private clearTool: ClearTool) {}
 
     ngOnInit() {
         this.brushTool.brush.subscribe(result => this.brush = result);
+        this.undoRedoTool.undoRedoOccurred.subscribe(result => this.goThroughDrawnPlants());
+        this.clearTool.clearActivated.subscribe(result => {
+            this.selectedItem = undefined;
+            this.drawnPlants = [];
+        });
         this.initCanvas();
     }
 
@@ -39,7 +44,7 @@ export class DrawingAreaComponent implements OnInit {
             } else {
                 this.drawnPlants.push(ellipse);
                 ellipse.plant = this.brush;
-                var text = new paper.PointText(ellipse.position);
+                let text = new paper.PointText(ellipse.position);
                 text.justification = 'center';
                 text.fillColor = this.brush.textColor.color;
                 text.content = this.brush.identificationNumber;
@@ -68,8 +73,8 @@ export class DrawingAreaComponent implements OnInit {
             item.strokeColor = 'black';
             if (!item.customType || item.resized) {
                 this.undoRedoTool.clearRedoStack();            
-                var previousPosition = item.originalPosition;
-                var newPosition = event.point.x;            
+                let previousPosition = item.originalPosition;
+                let newPosition = event.point.x;            
                 item.position = event.point;
                 this.undoRedoTool.pushToActionStack(item, this.undoRedoTool.moveAction(), previousPosition, newPosition);
                 item.originalPosition = item.position;
@@ -93,7 +98,7 @@ export class DrawingAreaComponent implements OnInit {
 
     private isShadowed(ellipse: any, visiblePlants: any[]): boolean {
         for (var i = 0; i < visiblePlants.length; i++) {
-            var ellipseToCompare = visiblePlants[i];
+            let ellipseToCompare = visiblePlants[i];
             if (ellipse !== ellipseToCompare && (ellipse.intersects(ellipseToCompare) || ellipseToCompare.contains(ellipse.position))) {
                 if (ellipse.plant.height < ellipseToCompare.plant.height) {
                     return true;
