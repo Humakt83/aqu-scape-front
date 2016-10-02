@@ -24,6 +24,9 @@ export class UndoRedoTool {
         this.currentUndoIndex = 0;
     }
     
+    /**
+     * Either moves the object back to its previous position or makes it disappear by changing its opacity to 0 
+     */
     undo() {
         if (this.actionStack.length < 1 || this.currentUndoIndex < 0) return;
         if (this.actionStack[this.currentUndoIndex].action === 'move') {
@@ -38,6 +41,9 @@ export class UndoRedoTool {
         this.undoRedoOccurred.next(null);
     }
 
+    /**
+     * Either moves the object to its next position or makes it reappear by changing its opacity to 1 
+     */
     redo() {
         if (this.actionStack.length < 1 || !this.actionStack[this.currentUndoIndex + 1]) return;
         this.currentUndoIndex = this.currentUndoIndex + 1;
@@ -51,6 +57,7 @@ export class UndoRedoTool {
         paper.view.draw();
         this.undoRedoOccurred.next(null);
     }
+
     pushToActionStack(item: any, action: string, previousPosition?: any, newPosition?: any) {
         this.actionStack.push({item: item, action: action, previousPosition: previousPosition, newPosition: newPosition});
         this.currentUndoIndex = this.actionStack.length -1;

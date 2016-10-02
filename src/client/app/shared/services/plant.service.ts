@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { Plant } from '../index';
 import { Observable } from 'rxjs/Observable';
 import { Http, Response } from '@angular/http';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
 import { GraphicsService } from './graphics.service';
 
 @Injectable()
@@ -13,15 +11,21 @@ export class PlantService {
 
     constructor (private http: Http, private graphicsService: GraphicsService) {}
 
+    /**
+     * Fetches the plants from the server
+     */
     getPlants() : Observable<Plant[]> {
         let usedPlants = this.getPlantsFromUrl();    
         return this.http.get(this.plantsUrl)
                     .map(this.extractData)
-                    .map(plants => plants.filter(plant => usedPlants.includes(plant.identificationNumber)))
+                    .map((plants: Plant[]) => plants.filter(plant => usedPlants.includes(plant.identificationNumber)))
                     .do(plants => this.graphicsService.assignColorPropertiesToPlants(plants))
                     .catch(this.handleError);
     }
 
+    /**
+     * Converts json of the response to a plant array
+     */
     private extractData(res: Response): Plant[] {        
         let plants: Plant[] = [];
         res.json().forEach((part: any) => plants.push(Plant.fromJSON(part)));
@@ -34,6 +38,9 @@ export class PlantService {
         return Observable.throw(errMsg);
     }
 
+    /**
+     * Parses and retuns the idenfiticationNumbers of the plants from the url.
+     */
     private getPlantsFromUrl(): number[] {
         return window.location.href.split('?')[1]
         .split('plants=')

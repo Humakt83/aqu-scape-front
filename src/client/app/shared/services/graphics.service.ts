@@ -13,6 +13,10 @@ export class GraphicsService {
         );
     }
 
+    /**
+     * Draws an ellipse to the canvas and returns it. 
+     * Size of the ellipse is determined by the current dimension and provided diameter
+     */
     drawEllipseFittingCanvasAndDimension(point: any, diameter: number, color: any): any {
         var size = new paper.Size(this.scaleWidthToFittingDimensions(diameter), this.scaleDepthToFittingDimensions(diameter))
         point.x = point.x - (size.width / 2);
@@ -24,8 +28,12 @@ export class GraphicsService {
         return ellipse;
     }
 
+    /**
+     * Sets color properties of the plants
+     */
     assignColorPropertiesToPlants(plantArray: Plant[]) {
         plantArray.forEach(plant => {
+            //Potentially a dangerous never-ending loop if there are too many plants. Have to be revised if the number of different plants increase.
             do var color = this.randomColorTiltedGreen();
             while (this.colorClashes(color, plantArray));
             let textColor = this.textColorFittingBackground(color);
@@ -50,6 +58,9 @@ export class GraphicsService {
         return color.red + color.green + color.blue;
     }
 
+    /**
+     * Returns random color where green, if not dominant color, is not dominated by other colors
+     */
     private randomColorTiltedGreen(): any {
         let minimumGreen = 100;
         let green = Math.max(Math.floor(Math.random() * 255), minimumGreen);
@@ -58,6 +69,9 @@ export class GraphicsService {
         return { green: green, red: red, blue: blue };
     }
 
+    /**
+     * Determines whether the color clashes with plants that already have a color assigned to them
+     */
     private colorClashes(color: any, plantArray: Plant[]) {
         for (let i = 0; i < plantArray.length; i++) {
             if (plantArray[i].randomColor && Math.abs(this.getSumOfColor(plantArray[i].randomColor) - this.getSumOfColor(color)) < 30) {

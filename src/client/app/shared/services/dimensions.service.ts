@@ -12,6 +12,9 @@ export class DimensionService {
 
 }
 
+/**
+ * Dimension of the aquarium representing aquarium floor
+ */
 export class Dimension {
     constructor(public width: number, public depth: number) {        
     }
