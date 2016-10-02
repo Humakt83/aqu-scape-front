@@ -1,50 +1,29 @@
 <!DOCTYPE html>
 <html>
     <head>
-    <title>Aqu-Scape</title>
+    <title>Aqu-Choice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <link rel="SHORTCUT ICON" href="aqu.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="lib/shim.min.js"></script>
+    <script src="lib/zone.js"></script>
+    <script src="lib/Reflect.js"></script>
+    <script src="lib/system.src.js"></script>
+    <script src="lib/paper-full.min.js"></script>
+    <script src="app/system-config.js"></script>
+    <script>
+          System.config({packages: {app: {format: 'register', defaultExtension: 'js'}}});
+          System.import('app/main')
+                .then(null, console.error.bind(console));
+    </script>
     </head>
     <body>
         <aqu>Lataa...</aqu>
-        <info></info>
     </body>
     <script>
         if(window.location.href.indexOf('?plants=') === -1) {
             window.location.href = 'http://localhost:3000';
         }
     </script>
-    <script>
-        // Fixes undefined module function in SystemJS bundle
-        function module() {}
-    </script>
-
-    <!-- shims:js -->
-    <!-- endinject -->
-
-    <% if (ENV === 'dev') { %>
-    <script>
-        System.config(<%=
-            JSON.stringify(SYSTEM_CONFIG, null, 2)
-        %>)
-    </script>
-    <% } %>
-
-    <!-- libs:js -->
-    <!-- endinject -->
-
-    <!-- inject:js -->
-    <!-- endinject -->
-
-    <% if (ENV === 'dev') { %>
-    <script>
-        System.import('<%= BOOTSTRAP_MODULE %>')
-        .catch(function (e) {
-            console.error(e,
-            'Report this error at https://github.com/mgechev/angular2-seed/issues');
-        });
-    </script>
-    <% } %>
 </html>
