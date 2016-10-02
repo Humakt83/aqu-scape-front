@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { UndoRedoTool, ClearTool } from '../shared/tools/index';
+import { UndoRedoTool, ClearTool, DimensionService } from '../shared/index';
 
 @Component({
     selector: 'tools',
@@ -8,7 +8,11 @@ import { UndoRedoTool, ClearTool } from '../shared/tools/index';
 })
 export class ToolsComponent {
 
-    constructor(private undoRedoTool: UndoRedoTool, private clearTool: ClearTool) {}
+    canvasDialogShown = false;
+    width: number = 100;
+    depth: number = 60;
+
+    constructor(private undoRedoTool: UndoRedoTool, private clearTool: ClearTool, private dimensionsService: DimensionService) {}
 
     undo() {
         this.undoRedoTool.undo();
@@ -20,6 +24,20 @@ export class ToolsComponent {
 
     clear() {
         this.clearTool.clear();
+    }
+
+    newCanvasDialog() {
+        this.canvasDialogShown = true;
+    }
+
+    closeCanvasDialog() {
+        this.canvasDialogShown = false;
+    }
+
+    createNewCanvas(width: number, depth: number) {
+        this.closeCanvasDialog();
+        this.clear();
+        this.dimensionsService.setDimensions(width, depth);
     }
 
 }

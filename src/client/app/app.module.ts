@@ -1,6 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { BrowserModule  } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { MainComponent }   from './main/main.component';
 import { PaletteComponent } from './palette/palette.component';
 import { DrawingAreaComponent } from './drawing-area/drawing-area.component';
@@ -12,7 +13,7 @@ import { ToolsComponent } from './tools/tools.component';
 
 @NgModule({
     declarations: [MainComponent, PaletteComponent, DrawingAreaComponent, InfoComponent, DimensionInfoComponent, BrushInfoComponent, ToolsComponent],
-    imports: [BrowserModule, HttpModule],
+    imports: [BrowserModule, HttpModule, FormsModule],
     bootstrap: [MainComponent],
     providers: [HttpModule, PlantService, UndoRedoTool, DimensionService, GraphicsService, BrushTool, ClearTool]
 })

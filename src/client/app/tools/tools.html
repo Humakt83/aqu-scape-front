@@ -1,5 +1,25 @@
 <div class="tools">
+    <button class="toolButton" (click)="newCanvasDialog()">New</button>
     <button class="toolButton" (click)="clear()">Clear</button>
     <button class="toolButton" (click)="undo()">Undo</button>
-    <button class="toolButton" (click)="redo()">Redo</button>
+    <button class="toolButton" (click)="redo()">Redo</button>    
+</div>
+
+<div class="canvasDialog" *ngIf="canvasDialogShown" (click)="closeCanvasDialog()">
+    <div class="dialogContent" (click)="$event.stopPropagation();">
+        <div class="dialogSection">
+            <p>Choose dimensions in centimeters for the aquarium.</p>
+        </div>
+        <div class="dialogSection">                
+            <label for="width">Width</label>
+            <input id="width" type="text" placeholder="100" [(ngModel)]="width">
+        </div>
+        <div class="dialogSection">                
+            <label for="depth">Depth</label>
+            <input id="depth" type="text" placeholder="60" [(ngModel)]="depth">
+        </div>
+        <div class="dialogSection">
+            <button class="createButton" (click)="createNewCanvas(width, depth)" [disabled]="depth < 1 || width < 1">Create</button>
+        </div>        
+    </div>
 </div>
