@@ -24,11 +24,6 @@ body {
     border-bottom: rgb(50, 50, 200) groove 3px;
 }
 
-.info, .print {
-    float: right;
-    margin-right: 5px;
-}
-
 .aquText {
     padding: 3px;
 }

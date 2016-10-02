@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class MainComponent {
 
     showPrint = false;
+    showInfo = false;
     image: HTMLImageElement = undefined;
 
     preparePrint() {        
@@ -17,5 +18,13 @@ export class MainComponent {
 
     hidePrint() {
         this.showPrint = false;
+    }
+
+    prepareInfo() {
+        this.showInfo = true;
+    }
+
+    closeInfo() {
+        this.showInfo = false;
     }
 }

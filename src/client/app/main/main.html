@@ -1,6 +1,6 @@
 <div class="container">
     <div class="banner">
-        <img class="info" src="info.png">
+        <img class="info" src="info.png" (click)="prepareInfo()">
         <img class="print" src="print.png" (click)="preparePrint()">
     </div>    
     <canvas-of-objects></canvas-of-objects>
@@ -10,4 +10,20 @@
         <print [canvasImage]="image"></print>
     </div>
     <div class="closePrint" *ngIf="showPrint" (click)="hidePrint()">X</div>
+</div>
+
+<div class="infoModal" *ngIf="showInfo" (click)="closeInfo()">
+    <div class="infoContent" (click)="$event.stopPropagation();">
+        <p>
+            Place the plants you selected in the previous service by picking them from the palette on the left and then placing them to the drawing canvas (large white area). 
+            You can move already placed objects by dragging them.
+        </p>
+        <p>
+            You can set the dimensions (width, depth) of aquarium by clicking NEW. This will clear the canvas.
+        </p>
+        <p>
+            Plants highlighted by <span style="color: red;">red</span> color mean they are partially or fully shadowed by taller plant.
+        </p>        
+        <button class="closeInfoButton" (click)="closeInfo()">Close</button>
+    </div>
 </div>
