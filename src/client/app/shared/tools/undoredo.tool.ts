@@ -46,7 +46,7 @@ export class UndoRedoTool {
         }
         paper.view.draw();
     }
-    pushToActionStack(item: any, action: string, previousPosition: any, newPosition: any) {
+    pushToActionStack(item: any, action: string, previousPosition?: any, newPosition?: any) {
         this.actionStack.push({item: item, action: action, previousPosition: previousPosition, newPosition: newPosition});
         this.currentUndoIndex = this.actionStack.length -1;
     }
