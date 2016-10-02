@@ -1,0 +1,21 @@
+<div class="print">
+    <img class="canvasImage" [src]="canvasImage">
+    <div class="plants">
+        <table class="plantTable">
+            <thead>
+                <th>#</th>
+                <th>NAME</th>
+                <th>DIAMETER</th>
+                <th>HEIGHT</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let plant of plants">
+                    <td [style.background-color]="plant.color" [style.color]="plant.textColor">{{plant.identificationNumber}}</td>
+                    <td>{{plant.scientificName}}</td>
+                    <td>{{plant.diameter}} cm</td>
+                    <td>{{plant.height}} cm</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

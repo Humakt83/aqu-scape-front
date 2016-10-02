@@ -1,0 +1,35 @@
+.print {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+}
+
+.canvasImage {
+    border: 2px solid blue;
+    width: 1000px;
+    height: 500px;
+    margin-top: 15px;
+}
+
+.plantTable {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.plantTable td {
+    border: 1px dotted black;    
+    padding: 1px;
+}
+
+.plantTable th {
+    color: white;
+    background-color: black;
+    border: 1px dotted white;    
+    padding: 1px;
+}

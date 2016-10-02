@@ -1,10 +1,14 @@
 <div class="container">
     <div class="banner">
         <img class="info" src="info.png">
-        <img class="print" src="print.png">
+        <img class="print" src="print.png" (click)="preparePrint()">
     </div>
     <tools></tools>
     <canvas-of-objects></canvas-of-objects>
     <drawing-area></drawing-area>
     <info></info>
+    <div *ngIf="showPrint">
+        <print [canvasImage]="image"></print>
+    </div>
+    <div class="closePrint" *ngIf="showPrint" (click)="hidePrint()">X</div>
 </div>

@@ -1,0 +1,20 @@
+.closePrint {
+    z-index: 100;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    color: white;
+    background-color: red;
+    border: 3px solid black;
+    border-radius: 15px;
+    width: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    padding: 3px 5px 3px 5px;
+}
+
+.closePrint:hover {
+    color: red;
+    background-color: white;
+}
