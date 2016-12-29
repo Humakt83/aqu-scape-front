@@ -44,7 +44,11 @@ export class PlantService {
         new Plant(25, 'Gymnocoronis spilanthoides', 'Vesiasteri', 20, 60),
         new Plant(26, 'Cryptocorune xwillisii', 'Kääpiömelalehti', 15, 20),
         new Plant(27, 'Cryptocorune undulata', 'Aaltomelalehti', 15, 25),
-        new Plant(28, 'Eleocharis acicularis', 'Hapsiluikka', 10, 20)
+        new Plant(28, 'Eleocharis acicularis', 'Hapsiluikka', 10, 20),
+        new Plant(29, 'Anubias barteri var. nana', 'Kääpiökeihäslehti', 8, 10),
+        new Plant(30, 'Helanthium tenellum', 'Pikkusuokki', 10, 10),
+        new Plant(31, 'Pogostemon stellatus', 'Tähtipatsuli', 20, 50),
+        new Plant(32, 'Rotala macranda', 'Punarotala', 15, 60)  
     ];
 
     /**
