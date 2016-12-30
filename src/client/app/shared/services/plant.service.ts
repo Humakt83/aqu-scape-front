@@ -20,7 +20,7 @@ export class PlantService {
         new Plant(1, 'Crinum calamistratum', 'Kiharakriinumi', 30, 100),
         new Plant(2, 'Ceratophyllum submersum', 'Hentokarvalehti', 15, 70),
         new Plant(3, 'Taxiphyllum barbieri', 'Jaavansammal', 20, 20),
-        new Plant(4, 'Taxiphyllum barbieri', 'Kelluhankasammal', 5, 3),
+        new Plant(4, 'Riccia Fluitans', 'Kelluhankasammal', 5, 3),
         new Plant(5, 'Microsorum pteropus', 'Jaavansaniainen', 20, 40),
         new Plant(6, 'Ceratopteris thalictroides', 'Vesisaniainen', 50, 60),
         new Plant(7, 'Vallisneria spiralis', 'Vallisneria', 20, 70),
